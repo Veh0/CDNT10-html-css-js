@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <h1>JS</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate ipsam, aut quod, repellendus alias est saepe quas officia error nobis nihil, reiciendis distinctio repellat? Repudiandae nihil aperiam recusandae ratione corporis!</p>
+    <h1>JQuery</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis labore placeat veniam, earum sit similique enim quas odit reprehenderit nam excepturi nulla voluptas, dicta culpa vero ratione harum! Perferendis, minus.</p>
+
+    <input type="text" placeholder="username" id="username">
+    <button id="btnText">OK</button>
+
+    <script>
+        
+
+        var h1 = document.getElementsByTagName('h1')
+        var btnText = document.getElementById('btnText')
+        var input = document.getElementById('username')
+
+        btnText.disabled = true
+        console.log(h1)
+        input.addEventListener('keyup', function() {
+            if (input.value.length >= 3) {
+                btnText.disabled = false
+            } else {
+                btnText.disabled = true
+            }
+        })
+
+        btnText.addEventListener('click', function() {
+            alert('Your username is '+input.value+' !')
+        })
+
+        for (let index = 0; index < h1.length; index++) {
+            const element = h1[index];
+            
+            element.addEventListener('click', function(e) {
+                
+                var display = e.target.nextElementSibling.style.display
+
+                if (display && display == 'none') {
+                    e.target.nextElementSibling.style.display = 'block'
+                } else {
+                    e.target.nextElementSibling.style.display = 'none'
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#bg {
+    background-color: #ccc;
+}
+
+#main {
+    width: 960px;
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 1600px;
+}
+
+p {
+    text-align: left;
+}
+
+#main section {
+    display: block;
+    text-align: center;
+}
+
+section#left, section#right {
+    width: 25%;
+    padding: 50px 20px;
+}
+
+section#right {
+    text-align: left;
+}
+
+section#middle {
+    width: 50%;
+}
+
+h3 {
+    width: 70%;
+    display: block;
+    text-align: left;
+    color: white;
+    background-color: orange;
+    padding: 2px;
+    font-size: 16px;
+}
+
+div.infos {
+    text-align: left;
+}
+
+.infos ul {
+    padding: 0 20px;
+}
+
+#middle #orange {
+    margin: 0 auto;
+    background-color: orange;
+    padding: 50px 20px;
+    color: white;
+}
+
+#orange p {
+    text-align: left;
+}
+
+#orange cite.side_right {
+    text-align: right;
+    width: 70%;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 12px;
+}
+
+#orange h2 {
+    margin: 0;
+    text-align: center;
+}
+
+#middle #cine_vacance {
+    margin-top: 30px;
+    border-top: solid 10px orange;
+}
+
+#cine_vacance div{
+    display: flex; 
+    justify-content: space-between;
+}
+
+#cine_vacance div article, #right article {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 48%;
+    text-align: left;
+}
+#right article {
+    width:100%;
+}
+
+h3.cine_annonce {
+    width: 100%;
+    font-weight: lighter;
+}
+
