@@ -91,9 +91,7 @@ function clickKey(key) {
     }
 }
 
-//
-
-$(document).ready(function() {
+//******  *******//
 
     $(idClient).keyup(event => checkConditions($(idClient)))
 
@@ -118,4 +116,3 @@ $(document).ready(function() {
         $('.pwdElement')[index].dataset.pwd = ""
         $('.pwdElement')[index].children[0].innerHTML = 'remove'
     })
-})
