@@ -29,6 +29,10 @@ function getRandomInt(max) {
 
 function fillDigicode(array) {
     var i = 0
+    for (let i = 0; i < array.length; i++) {
+        keys[i].innerHTML = ''
+        
+    }
 
     while (i < 10) {
         let rand = getRandomInt(array.length)
@@ -65,6 +69,7 @@ function checkConditions(element) {
             delBtn.innerHTML = 'close'
             $(delBtn).removeClass('success')
             $(btn).addClass('disabled')
+            display($(digicode))
         }
 }
 
@@ -80,13 +85,15 @@ function createDigicode() {
 }
 
 function clickKey(key) {
+    
 
-    if (password.dataset.pwd.length < 7) {
+    if (password.dataset.pwd.length < 7 && key.innerHTML != '') {
         password.dataset.pwd += key.innerHTML
         let index = password.dataset.pwd.length - 1
         $('.pwdElement')[index].dataset.pwd = key.innerHTML
         $('.pwdElement')[index].children[0].innerHTML = 'lens'
 
+        if (password.dataset.pwd.length == 1) display($(delPwdBtn))
         if (password.dataset.pwd.length == 6) alert('You are successfully connected')
     }
 }
