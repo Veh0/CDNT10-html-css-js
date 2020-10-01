@@ -28,7 +28,7 @@ function getRandomInt(max) {
 
 
 function fillDigicode(array) {
-    var i = 1
+    var i = 0
 
     while (i < 10) {
         let rand = getRandomInt(array.length)
