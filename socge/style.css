@@ -34,7 +34,7 @@ form .input-field, form p {
     margin: 0 auto;
 }
 
-.none {
+.hide {
     display: none;
 }
 
@@ -55,6 +55,11 @@ form .input-field, form p {
     font-size: 40px;
     text-align: center;
     vertical-align: middle;
+}
+
+.case:hover {
+    background-color: darkgrey;
+
 }
 
 #password {
@@ -79,3 +84,41 @@ form .input-field, form p {
     cursor: pointer;
 }
 
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-color: rgb(158,158,158)!important;
+    box-shadow: none
+}
+input[type=text]:not(.browser-default):focus:not([readonly])+label {
+    color: rgb(158,158,158)!important
+}
+
+.input-field .prefix, .input-field .prefix.active {
+    color: rgb(158, 158, 158)
+}
+
+
+.input-field #id_client.error {
+    border-bottom: solid 2px red!important;
+}
+
+.input-field #id_client.success {
+    border-bottom: solid 2px limegreen!important;
+}
+
+.input-field i.success {
+    color: limegreen!important;
+    border: none!important
+}
+
+span.info {
+    padding: 0 7px;
+    margin-left: 2px;
+    border: .5px rgb(158, 158, 158) solid;
+    border-radius: 25px 25px 25px 25px
+}
+
+#info-box {
+    padding: 2px;
+    border: black 1px solid;
+    text-align: left;
+}

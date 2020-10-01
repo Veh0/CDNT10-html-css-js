@@ -20,16 +20,21 @@
                     <div>
                       <div class="input-field inline">
                         <i class="material-icons prefix" id="delBtn">close</i>
-                        <input id="id_client" type="text" class="validate">
-                        <label for="id_client" data-error="wrong" data-success="right">Code Client</label>
+                        <input id="id_client" type="text">
+                        <label for="id_client">Code Client</label>
                       </div>
                     </div>
                 <p>
                     <label>
                         <input type="checkbox" id="souvenir">
-                        <span>Se souvenir de moi</span>
+                        <span>Se souvenir de moi <span class="info">i</span></span>
                     </label>
                 </p>
+
+                <div id="info-box" class="hide">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Perferendis temporibus corrupti cumque odio a adipisci fugiat ex sunt quidem harum inventore eligendi pariatur cupiditate, sapiente laboriosam, expedita deserunt sit at!</p>
+                </div>
 
                 <div id="password" data-pwd="">
                     <article class="pwdElement" data-pwd=""><i class="material-icons">remove</i></article>
@@ -41,7 +46,7 @@
                     <i class="material-icons" id="delPwdBtn">close</i>
                 </div>
 
-                <div id="digicode" class="none">
+                <div id="digicode" class="hide">
                     <section>
                         <article class="case"></article>
                         <article class="case"></article>
@@ -69,7 +74,7 @@
                     
                 </div>
                     
-                <a class="waves-effect waves-light red btn" id="validate">valider</a>
+                <a class="waves-effect waves-light red btn disabled" id="validate">valider</a>
                 
             </form>
     </div>

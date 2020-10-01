@@ -4,18 +4,19 @@ var idClient = $('#id_client')[0];
 var label = idClient.nextElementSibling
 var digicode = $('#digicode')[0];
 var password = $('#password')[0];
+var infoBtn = $('.info')[0];
 
 var delBtn = $('#delBtn')[0]
 var btn = $('#validate')
 
-var cases = new Array();
+var keys = new Array();
 
     for (let i = 0; i < digicode.children.length; i++) {
         const element = digicode.children[i]
 
         for (let index = 0; index < element.children.length; index++) {
             const key = element.children[index];
-            cases.push(key)
+            keys.push(key)
         }
     };
 
@@ -31,7 +32,6 @@ function fillDigicode(array) {
 
     while (i < 10) {
         let rand = getRandomInt(array.length)
-        console.log(array[rand].innerHTML)
         if (array[rand].innerHTML == '') {
             array[rand].innerHTML = i
             i++;
@@ -41,44 +41,76 @@ function fillDigicode(array) {
     }
 }
 
+function display(element) {
+    element.toggleClass('hide')
+}
+
+function checkConditions(element) {
+    console.log('yes')
+    element.removeClass('active')
+        
+        if (isNaN(element.val())) {
+            element.addClass('error')
+        } else {
+            element.removeClass('error')
+        }
+
+        if(element.val().length == 8 && !isNaN(element.val())) {
+            element.addClass('success')
+            delBtn.innerHTML = 'check'
+            $(delBtn).addClass('success')
+            $(btn).removeClass('disabled')
+        } else {
+            element.removeClass('success')
+            delBtn.innerHTML = 'close'
+            $(delBtn).removeClass('success')
+            $(btn).addClass('disabled')
+        }
+}
+
+function createDigicode() {
+
+    if(idClient.value.length == 8 && !isNaN(idClient.value)) {
+        fillDigicode(keys)
+        display($(digicode))
+    } else {
+        alert('Your ID is not exact')
+    }
+
+}
+
+function clickKey(key) {
+
+    if (password.dataset.pwd.length < 7) {
+        password.dataset.pwd += key.innerHTML
+        let index = password.dataset.pwd.length - 1
+        $('.pwdElement')[index].dataset.pwd = key.innerHTML
+        $('.pwdElement')[index].children[0].innerHTML = 'lens'
+
+        if (password.dataset.pwd.length == 6) alert('You are successfully connected')
+    }
+}
+
 //
 
 $(document).ready(function() {
-    fillDigicode(cases)
 
-    $(btn).click(function() {
+    $(idClient).keyup(event => checkConditions($(idClient)))
 
-        if(idClient.value.length == 8 && !isNaN(idClient.value)) {
-            delBtn.innerHTML = 'check'
-            $(digicode).removeClass('none')
-        } else {
-            alert('Your ID is not exact')
-        }
+    $(btn).click(event => createDigicode())
 
-    })
-
-    for (let i = 0; i < cases.length; i++) {
-        const element = cases[i];
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
         
-        $(element).click(function() {
-
-            if (password.dataset.pwd.length < 7) {
-                password.dataset.pwd += element.innerHTML
-                let index = password.dataset.pwd.length - 1
-                $('.pwdElement')[index].dataset.pwd = element.innerHTML
-                $('.pwdElement')[index].children[0].innerHTML = 'lens'
-
-                if (password.dataset.pwd.length == 6) alert('You are successfully connected')
-            }
-
-
-        })
+        $(key).click(event => clickKey(key))
     }
 
     $(delBtn).click(function() {
         idClient.value = idClient.value.slice(0, -1)
         $(btn).addClass('disabled')
     })
+
+    $(infoBtn).hover(display($(infoBtn)))
 
     $('#delPwdBtn').click(function() {
         password.dataset.pwd = password.dataset.pwd.slice(0, -1)
