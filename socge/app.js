@@ -108,7 +108,8 @@ function clickKey(key) {
         $(btn).addClass('disabled')
     })
 
-    $(infoBtn).hover(display($(infoBtn)))
+    $(infoBtn).click(event => display($('#info-box')))
+    $('#understand').click(event => display($('#info-box')))
 
     $('#delPwdBtn').click(function() {
         password.dataset.pwd = password.dataset.pwd.slice(0, -1)
