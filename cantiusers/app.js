@@ -92,6 +92,7 @@ function creditUser() {
         fetch(API + 'user/credit/'+ id +"?amount="+ amount.value, { method: "POST" })
             .then(res => console.log(res.status))
             .then(function() {
+                amount.value = ""
                 display($(modalEditWallet))
                 display($('#grey_bg'))
                 getUsers()
@@ -107,6 +108,7 @@ function debitUser() {
     if (amount.value != "" && !isNaN(amount.value)) {
         fetch(API + 'user/debit/' + id +"?amount="+ amount.value, { method: "POST" })
             .then(function() {
+                amount.value = ""
                 display($(modalEditWallet))
                 display($('#grey_bg'))
                 getUsers()
