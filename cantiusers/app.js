@@ -4,16 +4,27 @@ var usersList = $('#usersList')[0]
 var editWallet = []
 var searchName = $('#searchName')[0]
 var resetBtn = $('#resetBtn')[0]
+var creditBtn = $('#credit')[0]
+var debitBtn = $('#debit')[0]
+
+var modalEditWallet = $('#modalEditWallet')[0]
+var amount = $('#amount')[0]
 
 var tabUsers
 
 var API = "http://localhost:8080/lunchtime/";
 
 // FUNCTIONS
-$(searchName).keyup(event => filtreUsers(event))
-$(resetBtn).click(event => resetUsersFilter())
+function init() {
+    $(searchName).keyup(event => filtreUsers(event))
+    $(resetBtn).click(event => resetUsersFilter())
+    $(creditBtn).click(event => creditUser())
+    $(debitBtn).click(event => debitUser())
+}
+
 
 function getUsers() {
+    usersList.children[1].innerHTML = ""
     fetch(API + "user/findall")
         .then(res => res.json())
         .then(users => {
@@ -23,6 +34,22 @@ function getUsers() {
             })
             
         })
+}
+
+function getUserWallet(id) {
+    fetch(API + "user/find/" + id)
+        .then(res => res.json())
+        .then(user => {
+            modalEditWallet.children[0].innerHTML = user.wallet + "€<span id='close'>X</span>"
+            $('#close').click(event => {
+                display($(modalEditWallet))
+                display($('#grey_bg'))
+            })
+        })
+} 
+
+function display(element) {
+    $(element).toggleClass('hide')
 }
 
 function filtreUsers(e) {
@@ -49,7 +76,47 @@ function resetUsersFilter() {
 }
 
 function openModalEditWallet(e) {
-    console.log(e.target.dataset.id)
+    let id = e.target.dataset.id
+    getUserWallet(id)
+
+    display($(modalEditWallet))
+    display($('#grey_bg'))
+
+    modalEditWallet.dataset.id = id
+}
+
+function creditUser() {
+    let id = modalEditWallet.dataset.id
+
+    if (amount.value != "" && !isNaN(amount.value)) {
+        fetch(API + 'user/credit/'+ id +"?amount="+ amount.value, { method: "POST" })
+            .then(res => console.log(res.status))
+            .then(function() {
+                display($(modalEditWallet))
+                display($('#grey_bg'))
+                getUsers()
+            })
+    } else {
+        alert("Amount isn't correct")
+    }
+}
+
+function debitUser() {
+    let id = modalEditWallet.dataset.id
+
+    if (amount.value != "" && !isNaN(amount.value)) {
+        fetch(API + 'user/debit/' + id +"?amount="+ amount.value, { method: "POST" })
+            .then(function() {
+                display($(modalEditWallet))
+                display($('#grey_bg'))
+                getUsers()
+            })
+
+    } else {
+        alert("Amount isn't correct")
+    }
+    
+    
 }
 
 function updateUserRow(user) {
@@ -62,4 +129,5 @@ function updateUserRow(user) {
 
 getUsers()
 
+init()
 

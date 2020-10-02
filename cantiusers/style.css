@@ -1,12 +1,48 @@
+body {
+    margin: 0
+}
+
 #container {
     width: 80%;
     margin: 0 auto;
 }
 
-#searchName {
+#searchName, #amount {
     border: none;
     border-bottom: solid 1px black;
     margin: 10px 0;
+}
+
+.hide {
+    display: none;
+}
+
+#modalEditWallet {
+    position: absolute;
+    border: 1px solid black;
+    background-color: white;
+    width: 40%;
+    top: 40%;
+    left: 30%;
+    z-index: 10;
+}
+
+#grey_bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10000px;
+    background-color: rgba(0, 0, 0, .6);
+    
+}
+
+#modalEditWallet div {
+    padding: 15px;
+}
+
+#modalEditWallet div:first-child {
+    background-color: firebrick;
+    color: white;
 }
 
 #usersList {
@@ -32,7 +68,7 @@
     color: white;
   }
 
-  td .editWallet, #resetBtn {
+  td .editWallet, #resetBtn, .btn {
       color: white;
       background-color: firebrick;
       padding: 10px;
@@ -40,6 +76,20 @@
       border-radius: 10px 10px 10px 10px
   }
 
-  #resetBtn {
+  #resetBtn{
       width: 5%
   }
+
+  .btn {
+      width: 15%;
+      float: right
+  }
+
+  #close {
+      color: white;
+      font-weight: bolder;
+      float: right;
+      font-family: sans-serif;
+      cursor: pointer;
+  }
+

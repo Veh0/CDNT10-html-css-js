@@ -29,9 +29,18 @@
             </tbody>
         </table>
 
-        <div id="modalEditWallet"></div>
+        <div id="modalEditWallet" data-id="" class="hide">
+            <div></div>
+            <div class="content">
+                <input type="text" id="amount" placeholder="Amount">
+                <button id="credit" class="btn">Credit</button>
+                <button id="debit" class="btn">Debit</button>
+            </div>
+        </div>
+
+        
     </main>
-    
+    <div id="grey_bg" class="hide"></div>
 
     <script src="app.js"></script>
 </body>
