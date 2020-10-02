@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantinière</title>
+</head>
+<body>
+    <h1>Cantinière</h1>
+    <button id="login">login</button>
+    <button id="btnTest">TEST</button>
+
+    <script>
+        var btnLogin = document.getElementById('login');
+        var btnTest = document.getElementById('btnTest');
+
+        var API = "http://localhost:8080/lunchtime/";
+
+        btnLogin.addEventListener('click', login)
+        btnTest.addEventListener('click', testAPI)
+
+        function login() {
+            var credentials = {
+                    email: 'toto@gmail.com',
+                    password: 'bonjour'
+                }
+            var options = {
+                method: 'POST',
+                body: JSON.stringify(credentials)
+            }
+
+            fetch(API + 'login', options)
+                .then(res => console.log(res.status))
+        }
+
+        function testAPI() {
+            fetch(API + 'user/findall')
+                .then(res => console.log(res.json()))
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    <h1>AJAX</h1>
+    <button id="btnTest">TEST</button>
+    <section></section>
+
+    <script>
+        var btnTest = document.getElementById('btnTest')
+        var section = btnTest.nextElementSibling
+
+        btnTest.addEventListener('click', getTeams)
+
+        function getPoeme() {
+            let url = 'poeme.txt'
+
+            fetch(url)
+                .then(result => result.text())
+                .then(poeme => section.innerHTML += poeme)
+        }
+
+        function getTeams() {
+            let url = 'teams.json'
+
+            fetch(url)
+                .then(result => result.json())
+                .then(teams => {
+                    teams.forEach(team => {
+                        section.innerHTML += "<p>"+ team.name +"("+ team.yearFounded+")</p>"
+                    })
+                })
+        }
+    </script>
+</body>
+</html>
