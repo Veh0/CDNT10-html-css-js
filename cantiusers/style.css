@@ -1,0 +1,41 @@
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#searchName {
+    border: none;
+    border-bottom: solid 1px black;
+    margin: 10px 0;
+}
+
+#usersList {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #usersList tbody td, #usersList thead th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #usersList tbody tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #usersList tbody tr:hover {background-color: #ddd;}
+  
+  #usersList thead th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: firebrick;
+    color: white;
+  }
+
+  td .editWallet {
+      color: white;
+      background-color: firebrick;
+      padding: 10px;
+      width: 100%;
+      border-radius: 10px 10px 10px 10px
+  }
