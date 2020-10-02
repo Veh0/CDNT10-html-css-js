@@ -32,10 +32,14 @@
     color: white;
   }
 
-  td .editWallet {
+  td .editWallet, #resetBtn {
       color: white;
       background-color: firebrick;
       padding: 10px;
       width: 100%;
       border-radius: 10px 10px 10px 10px
+  }
+
+  #resetBtn {
+      width: 5%
   }

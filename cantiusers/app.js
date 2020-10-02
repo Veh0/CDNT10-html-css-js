@@ -3,6 +3,7 @@
 var usersList = $('#usersList')[0]
 var editWallet = []
 var searchName = $('#searchName')[0]
+var resetBtn = $('#resetBtn')[0]
 
 var tabUsers
 
@@ -10,6 +11,7 @@ var API = "http://localhost:8080/lunchtime/";
 
 // FUNCTIONS
 $(searchName).keyup(event => filtreUsers(event))
+$(resetBtn).click(event => resetUsersFilter())
 
 function getUsers() {
     fetch(API + "user/findall")
@@ -26,12 +28,6 @@ function getUsers() {
 function filtreUsers(e) {
     if (searchName.value.length < 3) {
         return
-    } else if (searchName.value.length == 0) {
-        usersList.children[1].innerHTML = ""
-
-        tabUsers.forEach(user => {
-            updateUserRow(user)
-        });
     } else {
         usersList.children[1].innerHTML = ""
 
@@ -42,6 +38,14 @@ function filtreUsers(e) {
             }
         });
     }
+}
+
+function resetUsersFilter() {
+    usersList.children[1].innerHTML = ""
+
+    tabUsers.forEach(user => {
+        updateUserRow(user)
+    });
 }
 
 function openModalEditWallet(e) {
